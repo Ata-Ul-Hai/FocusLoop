@@ -1,0 +1,90 @@
+:root {
+  /* Strictly Black & White / Grayscale */
+  --color-bg: #000000;
+  --color-surface-1: #111111;
+  --color-surface-2: #1c1c1c;
+  --color-surface-3: #2a2a2a;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.24);
+  --color-text: #ffffff;
+  --color-text-2: #a0a0a0;
+  --color-text-3: #666666;
+  --color-accent: #ffffff;
+  --color-accent-deep: #eeeeee;
+  --color-accent-glow: rgba(255, 255, 255, 0.1);
+  
+  /* Priority "colors" redefined as shades of gray/white */
+  --color-high: #ffffff;
+  --color-normal: #888888;
+  --color-low: #444444;
+  --color-done: #222222;
+
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+
+  /* Typography */
+  --font-main: 'Sora', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'DM Mono', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.4rem;
+  --text-2xl: 1.8rem;
+
+  /* Spacing - Scaled down for compact mobile view */
+  --space-1: 6px;
+  --space-2: 10px;
+  --space-3: 16px;
+  --space-4: 22px;
+  --space-5: 28px;
+  --space-6: 36px;
+  --space-8: 44px;
+  --space-10: 56px;
+  --space-12: 72px;
+  --space-16: 84px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.8);
+  --shadow-glow: 0 0 20px rgba(255, 255, 255, 0.1);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --duration-slow: 380ms;
+}
+
+[data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-surface-1: #f8f8f8;
+  --color-surface-2: #eeeeee;
+  --color-surface-3: #dddddd;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-strong: rgba(0, 0, 0, 0.2);
+  --color-text: #000000;
+  --color-text-2: #555555;
+  --color-text-3: #888888;
+  --color-accent: #000000;
+  --color-accent-deep: #222222;
+  --color-accent-glow: rgba(0, 0, 0, 0.05);
+
+  --color-high: #000000;
+  --color-normal: #666666;
+  --color-low: #aaaaaa;
+  --color-done: #dddddd;
+}
+
