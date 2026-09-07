@@ -13,7 +13,7 @@ FocusLoop is a personal task manager designed for deep work. Every task is paire
 
 - **🔄 Repeating Timers**: Automatic cycling reminders to maintain focus.
 - **🎙️ Voice Input**: Add tasks hands-free via Web Speech API.
-- **🔔 Notification Chain**: Native Android/iOS notifications, Browser notifications, and Audio tones.
+- **🔔 Notification Chain**: Native Android notifications, Browser notifications, and Audio tones (iOS target not yet configured).
 - **📱 Mobile Ready**: Built with Capacitor for a native mobile experience.
 - **🔋 PWA Support**: Installable on desktop and mobile, offline-ready.
 - **📊 Productivity Stats**: Track completed tasks, focus time, and streaks.
@@ -68,6 +68,25 @@ FocusLoop is a personal task manager designed for deep work. Every task is paire
   npx cap sync
   npx cap open android
   ```
+
+## 🧠 Key Engineering Decisions
+
+| Decision | Alternatives considered | Why this won |
+|----------|------------------------|--------------|
+| Capacitor over React Native | React Native, Flutter, full native | One Vite web codebase ships to both an APK and an installable PWA; a timer app doesn't need native component depth, so RN's rebuild cycle buys nothing here |
+| Vanilla JS stores + manual DOM components | React/Redux, web components | The UI is a handful of live-updating widgets — `taskStore`/`userStore` with `update()`/`destroy()` component lifecycle keeps the runtime lean with zero framework overhead |
+| Page Visibility API recovery over a foreground service | Android foreground service, AlarmManager | Browser tab throttling is the real failure mode for web timers; re-arming via visibility events fixes the actual bug class without native service complexity |
+| `localStorage` behind a `storageService` wrapper | IndexedDB, SQLite plugin | Task lists are tiny; the wrapper isolates storage so the backend can be swapped (e.g., for cloud sync) without touching feature code |
+| `vite-plugin-pwa` for offline support | Hand-written service worker | Precaching + update flow configured declaratively — no custom SW code to maintain |
+
+## ⚠️ Known Limitations & Trade-offs
+
+- **WebView-based, not continuous-native**: reminder chains re-arm on resume and permission events — a force-stopped app won't notify until relaunched (the honest Capacitor trade-off).
+- **Android is the configured native target**: iOS needs `npx cap add ios` and hasn't been set up.
+- **On-device only**: no cloud sync yet — clearing app data clears history (roadmap item below).
+- **Voice input leans on the Web Speech API**: best in Chrome; Firefox support is partial.
+
+---
 
 ## 🗺️ Future Roadmap
 - **AI-Driven Duration**: Integration with Gemma 2 to suggest optimal focus durations based on task complexity.
